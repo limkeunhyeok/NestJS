@@ -16,8 +16,7 @@ import { AuthService } from 'src/auth/auth.service';
 export class UsersService {
   constructor(
     private emailService: EmailService,
-    @InjectRepository(UserEntity)
-    private usersRepository: Repository<UserEntity>,
+    @InjectRepository(UserEntity) private usersRepository: Repository<UserEntity>,
     private connection: Connection,
     private authService: AuthService,
   ) {}
