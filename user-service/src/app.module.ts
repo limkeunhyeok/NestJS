@@ -11,7 +11,12 @@ import { validationSchema } from './config/validationSchema';
 import { UsersModule } from './users/users.module';
 import { ExceptionModule } from './exception/exception.module';
 import { LoggingModule } from './logging/logging.module';
+import { HealthCheckController } from './health-check/health-check.controller';
+import { HealthCheckModule } from './health-check/health-check.module';
 import authConfig from './config/authConfig';
+import { TerminusModule } from '@nestjs/terminus';
+import { HttpModule } from '@nestjs/axios';
+import { DogHealthIndicator } from './health-check/dog.health';
 
 @Module({
   imports: [
@@ -25,8 +30,11 @@ import authConfig from './config/authConfig';
     TypeOrmModule.forRoot(),
     ExceptionModule,
     LoggingModule,
+    HealthCheckModule,
+    TerminusModule,
+    HttpModule
   ],
-  controllers: [],
-  providers: [],
+  controllers: [HealthCheckController],
+  providers: [DogHealthIndicator],
 })
 export class AppModule {}
