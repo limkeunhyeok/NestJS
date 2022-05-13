@@ -47,6 +47,7 @@ export class UsersController {
     @Headers() headers: any,
     @Param('id') userId: string,
   ): Promise<UserInfo> {
+    console.log("GHJFDSA")
     return await this.usersService.getUserInfo(userId);
   }
 }
