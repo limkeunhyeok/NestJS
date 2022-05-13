@@ -9,6 +9,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import emailConfig from './config/emailConfig';
 import { validationSchema } from './config/validationSchema';
 import { UsersModule } from './users/users.module';
+import { ExceptionModule } from './exception/exception.module';
 import authConfig from './config/authConfig';
 
 @Module({
@@ -21,6 +22,7 @@ import authConfig from './config/authConfig';
       validationSchema,
     }),
     TypeOrmModule.forRoot(),
+    ExceptionModule,
   ],
   controllers: [],
   providers: [],
