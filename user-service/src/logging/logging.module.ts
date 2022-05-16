@@ -6,6 +6,6 @@ import { LoggingIntercepter } from './logging.interceptor';
   providers: [
     Logger,
     { provide: APP_INTERCEPTOR, useClass: LoggingIntercepter },
-  ]
+  ],
 })
 export class LoggingModule {}
