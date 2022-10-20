@@ -30,7 +30,7 @@ export class AllExceptionFilter implements ExceptionFilter {
         name: (<Error>exception).name,
         message: (<Error>exception).message,
       };
-      status = ErrorCode.NOT_FOUND_API;
+      status = ErrorCode.NOT_FOUND_API.status;
     } else {
       result = {
         errorCode: ErrorCode.SERVER_ERROR,
@@ -40,7 +40,7 @@ export class AllExceptionFilter implements ExceptionFilter {
       status = ErrorCode.SERVER_ERROR.status;
     }
 
-    response.status(status).json({
+    return response.status(status).json({
       ...result,
       timestamp: new Date().toISOString(),
       path: request.url,

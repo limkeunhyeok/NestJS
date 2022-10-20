@@ -4,8 +4,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ExceptionModule } from './common/exception/exception.module';
+import { HealthModule } from './common/health-check/health.module';
 import { LoggingModule } from './common/logging/logging.module';
-import { dbOptions } from './config';
+import { getDbOptions } from './config';
 
 @Module({
   imports: [
@@ -13,9 +14,10 @@ import { dbOptions } from './config';
       envFilePath: [`${process.cwd()}/.env.${process.env.NODE_ENV}`],
       isGlobal: true,
     }),
-    TypeOrmModule.forRoot(dbOptions),
+    TypeOrmModule.forRoot(getDbOptions()),
     LoggingModule,
     ExceptionModule,
+    HealthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
